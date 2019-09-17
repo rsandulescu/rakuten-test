@@ -1,0 +1,27 @@
+<h2>Personal information</h2>
+
+<form [formGroup]="paymentForm">
+    <div>
+        <label>
+            First name
+            <input type="text" formControlName="firstName" placeholder="Your first name" />
+        </label>
+
+        <app-form-errors-messages
+            [field]="paymentForm.get('firstName')"
+            [apiErrorMessage]="apiError && apiError.firstName ? apiError.firstName.message : null"
+        ></app-form-errors-messages>
+    </div>
+
+    <div>
+        <label>
+            Last name
+            <input type="text" formControlName="lastName" placeholder="Your last name" />
+        </label>
+
+        <app-form-errors-messages
+            [field]="paymentForm.get('lastName')"
+            [apiErrorMessage]="apiError && apiError.lastName ? apiError.lastName.message : null"
+        ></app-form-errors-messages>
+    </div>
+</form>

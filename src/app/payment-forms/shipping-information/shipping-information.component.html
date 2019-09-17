@@ -1,0 +1,72 @@
+<h2>Shipping information</h2>
+
+<form [formGroup]="paymentForm">
+    <div>
+        <label>
+            Address
+            <textarea cols="30" rows="10" formControlName="address" placeholder="Address"></textarea>
+        </label>
+
+        <app-form-errors-messages
+            [field]="paymentForm.get('address')"
+            [apiErrorMessage]="apiError && apiError.address ? apiError.address.message : null"
+        ></app-form-errors-messages>
+    </div>
+
+    <div class="flex-row shipping-container">
+        <div class="flex-row">
+            <div>
+                <label>
+                    Country
+                    <select formControlName="country">
+                        <option value="" disabled selected>Country</option>
+                        <option [value]="country.code" *ngFor="let country of countries">{{ country.name }}</option>
+                    </select>
+                </label>
+
+                <app-form-errors-messages
+                    [field]="paymentForm.get('country')"
+                    [apiErrorMessage]="apiError && apiError.country ? apiError.country.message : null"
+                ></app-form-errors-messages>
+            </div>
+
+            <div>
+                <div>
+                    <label>
+                        City
+                        <input class="city-container" type="text" formControlName="city" placeholder="City" />
+                    </label>
+
+                    <app-form-errors-messages
+                        [field]="paymentForm.get('city')"
+                        [apiErrorMessage]="apiError && apiError.city ? apiError.city.message : null"
+                    ></app-form-errors-messages>
+                </div>
+
+                <form [formGroup]="citiesForm" class="cities-popup" *ngIf="cities.length">
+                    <input type="hidden" formControlName="city" />
+                    <div>
+                        <div class="city-from-list" *ngFor="let city of cities" (click)="selectCity(city)">
+                            {{ city }}
+                        </div>
+                    </div>
+
+                    <div class="popup-error-message">
+                        <app-form-errors-messages
+                            [field]="citiesForm.get('city')"
+                            [apiErrorMessage]="
+                                citiesApiError && citiesApiError.city ? citiesApiError.city.message : null
+                            "
+                        ></app-form-errors-messages>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <label>
+                Shipping cost
+                <input type="text" formControlName="shippingCost" placeholder="Total" />
+            </label>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+<form [formGroup]="paymentForm">
+    <app-personal-information [paymentForm]="paymentForm"></app-personal-information>
+    <app-shipping-information [paymentForm]="paymentForm" [citiesForm]="citiesForm"></app-shipping-information>
+    <app-payment-method [paymentForm]="paymentForm"></app-payment-method>
+
+    <div>
+        <label>
+            <input type="checkbox" formControlName="termsAndConditions" />
+            Agree&nbsp;<a href="javascript:void(0)">terms and conditions</a>
+        </label>
+
+        <app-form-errors-messages
+            [field]="paymentForm.get('termsAndConditions')"
+            [apiErrorMessage]="apiError && apiError.termsAndConditions ? apiError.termsAndConditions.message : null"
+        ></app-form-errors-messages>
+    </div>
+
+    <button type="submit" (click)="sendForm()" [disabled]="pending">
+        Send
+    </button>
+</form>

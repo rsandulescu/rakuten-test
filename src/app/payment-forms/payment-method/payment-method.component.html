@@ -1,0 +1,41 @@
+<h2>Payment method</h2>
+
+<form [formGroup]="paymentForm">
+    <div>
+        <label>
+            Card name
+            <input type="text" formControlName="cardName" placeholder="Complete name" />
+        </label>
+
+        <app-form-errors-messages
+            [field]="paymentForm.get('cardName')"
+            [apiErrorMessage]="apiError && apiError.cardName ? apiError.cardName.message : null"
+        ></app-form-errors-messages>
+    </div>
+
+    <div class="flex-row">
+        <div>
+            <label class="card-number">
+                Card number
+                <input type="text" formControlName="cardNumber" placeholder="Card number" />
+            </label>
+
+            <app-form-errors-messages
+                [field]="paymentForm.get('cardNumber')"
+                [apiErrorMessage]="apiError && apiError.cardNumber ? apiError.cardNumber.message : null"
+            ></app-form-errors-messages>
+        </div>
+
+        <div>
+            <label>
+                CVV
+                <input type="text" formControlName="cvv" placeholder="CVV number" />
+            </label>
+
+            <app-form-errors-messages
+                [field]="paymentForm.get('cvv')"
+                [apiErrorMessage]="apiError && apiError.cvv ? apiError.cvv.message : null"
+            ></app-form-errors-messages>
+        </div>
+    </div>
+</form>

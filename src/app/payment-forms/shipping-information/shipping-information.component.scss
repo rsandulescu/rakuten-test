@@ -1,0 +1,33 @@
+.shipping-container {
+    justify-content: space-between;
+
+    .cities-popup {
+        display: flex;
+        position: absolute;
+
+        .city-from-list {
+            width: 168px;
+            border: 1px solid #555;
+            background-color: rgb(205, 205, 205);
+            padding: 5px 17px;
+            cursor: pointer;
+        }
+        .city-from-list:hover {
+            background-color: white;
+        }
+
+        .popup-error-message {
+            background-color: white;
+            padding: 5px;
+            height: 0;
+        }
+    }
+
+    select {
+        width: 125px;
+    }
+}
+
+.city-container {
+    width: 200px;
+}

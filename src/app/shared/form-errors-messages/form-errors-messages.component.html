@@ -1,0 +1,24 @@
+<div class="text-danger" *ngIf="field.invalid && (field.dirty || field.touched)">
+    <ng-container *ngIf="field.touched">
+        <small *ngIf="fieldErrors && fieldErrors.required">
+            This field is required.
+        </small>
+        <small *ngIf="fieldErrors && fieldErrors.minlength">
+            Actual length: {{ fieldErrors.minlength.actualLength }}. Minimum length:
+            {{ fieldErrors.minlength.requiredLength }}.
+        </small>
+        <small *ngIf="fieldErrors && fieldErrors.maxlength">
+            Actual length: {{ fieldErrors.maxlength.actualLength }}. Maximum length:
+            {{ fieldErrors.maxlength.requiredLength }}.
+        </small>
+        <small *ngIf="fieldErrors && fieldErrors.pattern && fieldErrors.pattern.requiredPattern === '^[0-9]*$'">
+            Only digits are accepted.
+        </small>
+        <small *ngIf="fieldErrors && fieldErrors.cityNotSelected">
+            Please select a city from this list.
+        </small>
+        <small *ngIf="fieldErrors && fieldErrors.cityNotValid">
+            Please select a valid city.
+        </small>
+    </ng-container>
+</div>
